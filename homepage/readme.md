@@ -1,8 +1,8 @@
-# 派聪明 (PaiSmart) - 首页
+# DeepSeek-RAG - 首页
 
 ## 项目简介
 
-派聪明是一款基于 Java 技术栈的 RAG（检索增强生成）知识库项目。HomePage为该项目提供了一个现代化的首页展示，采用响应式设计，支持深色/浅色主题切换，为用户提供优秀的浏览体验。
+这是一款基于 Java 技术栈的 RAG（检索增强生成）知识库项目。HomePage为该项目提供了一个现代化的首页展示，采用响应式设计，支持深色/浅色主题切换，为用户提供优秀的浏览体验。
 
 ## 功能特性
 
@@ -143,13 +143,3 @@ particlesJS('particles-js', {
 - **移动端**：iOS Safari 13+、Chrome Mobile 80+
 - **不支持**：IE 11 及以下版本
 
-## 联系方式
-
-- **项目主页**：<https://github.com/itwanger/PaiSmart>
-- **作者**：沉默王二
-- **微信**：qing_gee
-- **知识星球**：<https://javabetter.cn/zhishixingqiu/>
-
----
-
-**注意**：本文档会随着项目的发展持续更新，请定期查看最新版本。
