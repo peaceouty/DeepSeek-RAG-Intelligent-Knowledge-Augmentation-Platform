@@ -50,8 +50,8 @@ DeepSeek RAG 增强检索知识库系统是一套基于检索增强生成（RAG�
 ## 项目结构
 ### 后端
 ```
-src/main/java/com/deepseek/rag/
-├── DeepSeekApplication.java      # 主应用程序入口
+src/main/java/com/yizhaoqi/smartpai/
+├── SmartPaiApplication.java      # 主应用程序入口
 ├── client/                       # 外部 API 客户端
 ├── config/                       # 配置类
 ├── consumer/                     # Kafka 消费者
@@ -99,12 +99,12 @@ frontend/
 ### 后端启动
 1. 克隆项目代码：
    ```bash
-   git clone https://github.com/your-repo/deepseek-rag.git
-   cd deepseek-rag
+   git clone https://github.com/peaceouty/DeepSeek-RAG-Intelligent-Knowledge-Augmentation-Platform.git
+   cd DeepSeek-RAG-Intelligent-Knowledge-Augmentation-Platform
    ```
 
 2. 配置数据库和其他服务：
-   - 修改 `application.yml` 文件中的 MySQL、Redis、Kafka 等配置。
+   - 修改 `src/main/resources/application.yml` 文件中的 MySQL、Redis、Kafka 等配置。
 
 3. 启动后端服务：
    ```bash
@@ -127,5 +127,43 @@ frontend/
    pnpm dev
    ```
 
+## Docker 部署
+项目提供了Docker Compose配置文件，可以快速启动所有依赖服务：
+
+```bash
+cd docs
+docker-compose up -d
+```
+
+这将启动以下服务：
+- MySQL 数据库
+- Redis 缓存
+- Elasticsearch 搜索引擎
+- Kafka 消息队列
+- MinIO 对象存储
+
+## 项目特色
+- 🚀 **高性能**: 基于Spring Boot + Vue 3的现代化架构
+- 🔒 **安全可靠**: JWT认证 + Spring Security权限控制
+- 📊 **智能检索**: 结合语义搜索和关键词搜索的混合检索
+- 🏢 **多租户**: 支持企业级多租户架构
+- 💬 **实时交互**: WebSocket + SSE实现流式AI对话
+- 📁 **多格式支持**: 自动解析PDF、Word、TXT等多种文档格式
+- 🔧 **易部署**: Docker容器化部署，开箱即用
+
+## 贡献指南
+欢迎提交Issue和Pull Request来帮助改进项目！
+
+1. Fork 项目
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启 Pull Request
+
+## 许可证
+本项目基于 [MIT License](LICENSE) 开源协议。
+
 ## 联系方式
-如有任何问题，请联系 [your-email@example.com](mailto:your-email@example.com)。
+如有任何问题，请通过以下方式联系：
+- GitHub Issues: [项目问题反馈](https://github.com/peaceouty/DeepSeek-RAG-Intelligent-Knowledge-Augmentation-Platform/issues)
+- 项目作者: [@peaceouty](https://github.com/peaceouty)
