@@ -1,169 +1,169 @@
-# DeepSeek RAG 增强检索知识库系统
+# DeepSeek-RAG-Intelligent-Knowledge-Augmentation-Platform
 
-## 项目简介
-DeepSeek RAG 增强检索知识库系统是一套基于检索增强生成（RAG）技术的智能知识库后端解决方案。项目集成了 Ollama DeepSeek 和 OpenAI 双模型，支持文档解析与 Git 仓库分析能力。用户可以上传文档或代码，系统会自动将其转化为向量存储，构建专属知识库，并支持通过自然语言进行问答检索。
+## Project Introduction
+DeepSeek RAG Enhanced Retrieval Knowledge Base System is an intelligent knowledge base backend solution based on Retrieval-Augmented Generation (RAG) technology. The project integrates both Ollama DeepSeek and OpenAI models, supporting document parsing and Git repository analysis capabilities. Users can upload documents or code, and the system will automatically convert them into vector storage, building a dedicated knowledge base that supports question-and-answer retrieval through natural language.
 
-## 技术栈
-### 后端
-- **框架**: Spring Boot
-- **数据库**: MySQL
+## Technology Stack
+### Backend
+- **Framework**: Spring Boot
+- **Database**: MySQL
 - **ORM**: MyBatis-Plus
-- **缓存**: Redis
-- **搜索引擎**: Elasticsearch
-- **消息队列**: Apache Kafka
-- **文件存储**: MinIO
-- **文档解析**: Apache Tika
-- **安全认证**: Spring Security + JWT
-- **AI集成**: DeepSeek API / 本地 Ollama + Embedding
-- **实时通信**: WebSocket
-- **响应式编程**: WebFlux
+- **Cache**: Redis
+- **Search Engine**: Elasticsearch
+- **Message Queue**: Apache Kafka
+- **File Storage**: MinIO
+- **Document Parsing**: Apache Tika
+- **Security Authentication**: Spring Security + JWT
+- **AI Integration**: DeepSeek API / Local Ollama + Embedding
+- **Real-time Communication**: WebSocket
+- **Reactive Programming**: WebFlux
 
-### 前端
-- **框架**: Vue 3 + TypeScript
-- **构建工具**: Vite
-- **UI组件**: Naive UI
-- **状态管理**: Pinia
-- **路由**: Vue Router
-- **样式**: UnoCSS + SCSS
-- **图标**: Iconify
-- **包管理**: pnpm
+### Frontend
+- **Framework**: Vue 3 + TypeScript
+- **Build Tool**: Vite
+- **UI Components**: Naive UI
+- **State Management**: Pinia
+- **Routing**: Vue Router
+- **Styling**: UnoCSS + SCSS
+- **Icons**: Iconify
+- **Package Management**: pnpm
 
-## 项目功能
-### 核心功能
-1. **知识库管理**  
-   - 支持文档上传与解析，提供分片上传和断点续传功能。
-   - 自动生成文档向量索引，支持标签化管理。
-   - 提供公开与私有文档权限设置，支持组织标签分类。
+## Project Features
+### Core Features
+1. **Knowledge Base Management**  
+   - Supports document upload and parsing, providing chunked upload and resumable transfer functionality.
+   - Automatically generates document vector indexes, supporting tag-based management.
+   - Provides public and private document permission settings, supporting organizational tag classification.
 
-2. **AI驱动的 RAG 实现**  
-   - 将文档分块并生成高维向量，通过 Elasticsearch 存储和检索。
-   - 支持语义搜索与关键词搜索，结合 LLM 提供基于文档的精准响应。
+2. **AI-Driven RAG Implementation**  
+   - Chunks documents and generates high-dimensional vectors, stored and retrieved via Elasticsearch.
+   - Supports semantic search and keyword search, combined with LLM for document-based precise responses.
 
-3. **企业级多租户支持**  
-   - 通过组织标签实现多租户架构，支持团队或部门独立管理知识库。
-   - 数据隔离与权限控制，确保安全性。
+3. **Enterprise-Level Multi-Tenant Support**  
+   - Implements multi-tenant architecture through organizational tags, supporting independent knowledge base management for teams or departments.
+   - Data isolation and access control to ensure security.
 
-4. **实时通信**  
-   - 使用 WebSocket 实现用户与 AI 系统的实时交互。
-   - 前端采用 SSE 技术，逐字逐句推送 AI 生成内容。
+4. **Real-time Communication**  
+   - Uses WebSocket for real-time interaction between users and the AI system.
+   - Frontend adopts SSE technology to push AI-generated content word by word.
 
-## 项目结构
-### 后端
+## Project Structure
+### Backend
 ```
 src/main/java/com/yizhaoqi/smartpai/
-├── SmartPaiApplication.java      # 主应用程序入口
-├── client/                       # 外部 API 客户端
-├── config/                       # 配置类
-├── consumer/                     # Kafka 消费者
-├── controller/                   # REST API 端点
-├── entity/                       # 数据实体
-├── exception/                    # 自定义异常
-├── handler/                      # WebSocket 处理器
-├── model/                        # 领域模型
-├── repository/                   # 数据访问层
-├── service/                      # 业务逻辑
-└── utils/                        # 工具类
+├── SmartPaiApplication.java      # Main application entry point
+├── client/                       # External API clients
+├── config/                       # Configuration classes
+├── consumer/                     # Kafka consumers
+├── controller/                   # REST API endpoints
+├── entity/                       # Data entities
+├── exception/                    # Custom exceptions
+├── handler/                      # WebSocket handlers
+├── model/                        # Domain models
+├── repository/                   # Data access layer
+├── service/                      # Business logic
+└── utils/                        # Utility classes
 ```
 
-### 前端
+### Frontend
 ```
 frontend/
-├── packages/           # 可重用模块
-├── public/             # 静态资源
-├── src/                # 主应用程序代码
-│   ├── assets/         # SVG 图标，图片
-│   ├── components/     # Vue 组件
-│   ├── layouts/        # 页面布局
-│   ├── router/         # 路由配置
-│   ├── service/        # API 集成
-│   ├── store/          # 状态管理
-│   ├── views/          # 页面组件
-│   └── ...             # 其他工具和配置
-└── ...                 # 构建配置文件
+├── packages/           # Reusable modules
+├── public/             # Static resources
+├── src/                # Main application code
+│   ├── assets/         # SVG icons, images
+│   ├── components/     # Vue components
+│   ├── layouts/        # Page layouts
+│   ├── router/         # Routing configuration
+│   ├── service/        # API integration
+│   ├── store/          # State management
+│   ├── views/          # Page components
+│   └── ...             # Other tools and configurations
+└── ...                 # Build configuration files
 ```
 
-## 环境要求
-在开始之前，请确保已安装以下软件：
+## Environment Requirements
+Before starting, please ensure the following software is installed:
 - Java 17
-- Maven 3.8.6 或更高版本
-- Node.js 18.20.0 或更高版本
-- pnpm 8.7.0 或更高版本
+- Maven 3.8.6 or higher
+- Node.js 18.20.0 or higher
+- pnpm 8.7.0 or higher
 - MySQL 8.0
 - Elasticsearch 8.10.0
 - MinIO 8.5.12
 - Kafka 3.2.1
 - Redis 7.0.11
-- Docker（可选，用于运行 Redis、MinIO、Elasticsearch 和 Kafka 等服务）
+- Docker (optional, for running services like Redis, MinIO, Elasticsearch, and Kafka)
 
-## 快速开始
-### 后端启动
-1. 克隆项目代码：
+## Quick Start
+### Backend Startup
+1. Clone the project code:
    ```bash
    git clone https://github.com/peaceouty/DeepSeek-RAG-Intelligent-Knowledge-Augmentation-Platform.git
    cd DeepSeek-RAG-Intelligent-Knowledge-Augmentation-Platform
    ```
 
-2. 配置数据库和其他服务：
-   - 修改 `src/main/resources/application.yml` 文件中的 MySQL、Redis、Kafka 等配置。
+2. Configure database and other services:
+   - Modify the MySQL, Redis, Kafka, etc., configurations in the `src/main/resources/application.yml` file.
 
-3. 启动后端服务：
+3. Start the backend service:
    ```bash
    mvn spring-boot:run
    ```
 
-### 前端启动
-1. 进入前端目录：
+### Frontend Startup
+1. Enter the frontend directory:
    ```bash
    cd frontend
    ```
 
-2. 安装依赖：
+2. Install dependencies:
    ```bash
    pnpm install
    ```
 
-3. 启动前端服务：
+3. Start the frontend service:
    ```bash
    pnpm dev
    ```
 
-## Docker 部署
-项目提供了Docker Compose配置文件，可以快速启动所有依赖服务：
+## Docker Deployment
+The project provides a Docker Compose configuration file for quickly starting all dependent services:
 
 ```bash
 cd docs
 docker-compose up -d
 ```
 
-这将启动以下服务：
-- MySQL 数据库
-- Redis 缓存
-- Elasticsearch 搜索引擎
-- Kafka 消息队列
-- MinIO 对象存储
+This will start the following services:
+- MySQL database
+- Redis cache
+- Elasticsearch search engine
+- Kafka message queue
+- MinIO object storage
 
-## 项目特色
-- 🚀 **高性能**: 基于Spring Boot + Vue 3的现代化架构
-- 🔒 **安全可靠**: JWT认证 + Spring Security权限控制
-- 📊 **智能检索**: 结合语义搜索和关键词搜索的混合检索
-- 🏢 **多租户**: 支持企业级多租户架构
-- 💬 **实时交互**: WebSocket + SSE实现流式AI对话
-- 📁 **多格式支持**: 自动解析PDF、Word、TXT等多种文档格式
-- 🔧 **易部署**: Docker容器化部署，开箱即用
+## Project Highlights
+- 🚀 **High Performance**: Modern architecture based on Spring Boot + Vue 3
+- 🔒 **Secure and Reliable**: JWT authentication + Spring Security access control
+- 📊 **Intelligent Retrieval**: Hybrid retrieval combining semantic search and keyword search
+- 🏢 **Multi-Tenant**: Supports enterprise-level multi-tenant architecture
+- 💬 **Real-time Interaction**: WebSocket + SSE for streaming AI conversations
+- 📁 **Multi-Format Support**: Automatic parsing of PDF, Word, TXT, and other document formats
+- 🔧 **Easy Deployment**: Docker containerized deployment, ready to use out of the box
 
-## 贡献指南
-欢迎提交Issue和Pull Request来帮助改进项目！
+## Contribution Guidelines
+Welcome to submit Issues and Pull Requests to help improve the project!
 
-1. Fork 项目
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 开启 Pull Request
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 许可证
-本项目基于 [MIT License](LICENSE) 开源协议。
+## License
+This project is open-sourced under the MIT License.
 
-## 联系方式
-如有任何问题，请通过以下方式联系：
-- GitHub Issues: [项目问题反馈](https://github.com/peaceouty/DeepSeek-RAG-Intelligent-Knowledge-Augmentation-Platform/issues)
-- 项目作者: [@peaceouty](https://github.com/peaceouty)
+## Contact Information
+For any questions, please contact via:
+- GitHub Issues: [Project Issue Feedback](https://github.com/peaceouty/DeepSeek-RAG-Intelligent-Knowledge-Augmentation-Platform/issues)
+- Project Author: [@peaceouty](https://github.com/peaceouty)
